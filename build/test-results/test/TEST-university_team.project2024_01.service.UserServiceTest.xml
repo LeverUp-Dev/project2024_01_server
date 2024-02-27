@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="university_team.project2024_01.service.UserServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2024-02-27T15:53:46" hostname="ASUS테블릿" time="1.531">
+  <properties/>
+  <testcase name="중복_회원_예외()" classname="university_team.project2024_01.service.UserServiceTest" time="1.488"/>
+  <testcase name="회원가입()" classname="university_team.project2024_01.service.UserServiceTest" time="0.038"/>
+  <system-out><![CDATA[00:53:40.694 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [university_team.project2024_01.service.UserServiceTest]: UserServiceTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+00:53:40.835 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration university_team.project2024_01.Project202401Application for test class university_team.project2024_01.service.UserServiceTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.9)
+
+2024-02-28T00:53:41.319+09:00  INFO 42804 --- [    Test worker] u.p.service.UserServiceTest              : Starting UserServiceTest using Java 17.0.9 with PID 42804 (started by ododo in E:\2024_01_project_server\project2024_01)
+2024-02-28T00:53:41.321+09:00  INFO 42804 --- [    Test worker] u.p.service.UserServiceTest              : No active profile set, falling back to 1 default profile: "default"
+2024-02-28T00:53:42.167+09:00  INFO 42804 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-02-28T00:53:42.211+09:00  INFO 42804 --- [    Test worker] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JPA repository interfaces.
+2024-02-28T00:53:42.903+09:00  INFO 42804 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-02-28T00:53:43.126+09:00  INFO 42804 --- [    Test worker] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection conn0: url=jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448 user=SA
+2024-02-28T00:53:43.127+09:00  INFO 42804 --- [    Test worker] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-02-28T00:53:43.187+09:00  INFO 42804 --- [    Test worker] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-02-28T00:53:43.289+09:00  INFO 42804 --- [    Test worker] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.22.Final
+2024-02-28T00:53:43.293+09:00  INFO 42804 --- [    Test worker] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2024-02-28T00:53:43.737+09:00  INFO 42804 --- [    Test worker] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-02-28T00:53:44.007+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049224007 | took 5ms | statement | connection 2| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select * from INFORMATION_SCHEMA.SEQUENCES
+select * from INFORMATION_SCHEMA.SEQUENCES;
+2024-02-28T00:53:44.632+09:00  INFO 42804 --- [    Test worker] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-02-28T00:53:44.644+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : drop table if exists users cascade 
+2024-02-28T00:53:44.645+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049224645 | took 0ms | statement | connection 3| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+drop table if exists users cascade 
+drop table if exists users cascade ;
+2024-02-28T00:53:44.645+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : drop sequence if exists users_seq
+2024-02-28T00:53:44.645+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049224645 | took 0ms | statement | connection 3| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+drop sequence if exists users_seq
+drop sequence if exists users_seq;
+2024-02-28T00:53:44.651+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : create sequence users_seq start with 1 increment by 50
+2024-02-28T00:53:44.652+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049224652 | took 1ms | statement | connection 4| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+create sequence users_seq start with 1 increment by 50
+create sequence users_seq start with 1 increment by 50;
+2024-02-28T00:53:44.655+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : create table users (id bigint not null, password varchar(255), user_id varchar(255), username varchar(255), primary key (id))
+2024-02-28T00:53:44.659+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049224659 | took 3ms | statement | connection 4| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+create table users (id bigint not null, password varchar(255), user_id varchar(255), username varchar(255), primary key (id))
+create table users (id bigint not null, password varchar(255), user_id varchar(255), username varchar(255), primary key (id));
+2024-02-28T00:53:44.662+09:00  INFO 42804 --- [    Test worker] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-02-28T00:53:45.011+09:00  WARN 42804 --- [    Test worker] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-02-28T00:53:46.023+09:00  INFO 42804 --- [    Test worker] u.p.service.UserServiceTest              : Started UserServiceTest in 5.0 seconds (process running for 6.655)
+2024-02-28T00:53:47.496+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+2024-02-28T00:53:47.499+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [1] as [VARCHAR] - [song1]
+2024-02-28T00:53:47.500+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227500 | took 0ms | statement | connection 5| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username='song1';
+2024-02-28T00:53:47.510+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : select next value for users_seq
+2024-02-28T00:53:47.514+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227514 | took 1ms | statement | connection 5| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select next value for users_seq
+select next value for users_seq;
+2024-02-28T00:53:47.546+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : insert into users (password,user_id,username,id) values (?,?,?,?)
+2024-02-28T00:53:47.548+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [1] as [VARCHAR] - [null]
+2024-02-28T00:53:47.548+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [2] as [VARCHAR] - [null]
+2024-02-28T00:53:47.549+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [3] as [VARCHAR] - [song1]
+2024-02-28T00:53:47.550+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [4] as [BIGINT] - [1]
+2024-02-28T00:53:47.553+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227553 | took 1ms | statement | connection 5| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+insert into users (password,user_id,username,id) values (?,?,?,?)
+insert into users (password,user_id,username,id) values (NULL,NULL,'song1',1);
+2024-02-28T00:53:47.556+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+2024-02-28T00:53:47.556+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [1] as [VARCHAR] - [song1]
+2024-02-28T00:53:47.557+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227557 | took 0ms | statement | connection 5| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username='song1';
+2024-02-28T00:53:47.575+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227575 | took 0ms | rollback | connection 5| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+
+;
+2024-02-28T00:53:47.603+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+2024-02-28T00:53:47.604+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [1] as [VARCHAR] - [song]
+2024-02-28T00:53:47.605+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227605 | took 0ms | statement | connection 6| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username=?
+select u1_0.id,u1_0.password,u1_0.user_id,u1_0.username from users u1_0 where u1_0.username='song';
+2024-02-28T00:53:47.606+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : select next value for users_seq
+2024-02-28T00:53:47.607+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227607 | took 0ms | statement | connection 6| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+select next value for users_seq
+select next value for users_seq;
+2024-02-28T00:53:47.630+09:00 DEBUG 42804 --- [    Test worker] org.hibernate.SQL                        : insert into users (password,user_id,username,id) values (?,?,?,?)
+2024-02-28T00:53:47.630+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [1] as [VARCHAR] - [null]
+2024-02-28T00:53:47.631+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [2] as [VARCHAR] - [null]
+2024-02-28T00:53:47.631+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [3] as [VARCHAR] - [song]
+2024-02-28T00:53:47.631+09:00 TRACE 42804 --- [    Test worker] org.hibernate.orm.jdbc.bind              : binding parameter [4] as [BIGINT] - [2]
+2024-02-28T00:53:47.632+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227632 | took 0ms | statement | connection 6| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+insert into users (password,user_id,username,id) values (?,?,?,?)
+insert into users (password,user_id,username,id) values (NULL,NULL,'song',2);
+2024-02-28T00:53:47.634+09:00  INFO 42804 --- [    Test worker] p6spy                                    : #1709049227634 | took 0ms | commit | connection 6| url jdbc:h2:mem:e9aebbb6-5c42-4fd7-9f78-686666300448
+
+;
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

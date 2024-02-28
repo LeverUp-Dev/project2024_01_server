@@ -27,8 +27,13 @@ public class UserService {
 
     private void validateDuplicateUser(User user) {
         List<User> findUsers = userRepository.findByName(user.getUsername());
+        List<User> findUserIds = userRepository.findByUserId(user.getUserId());
+
         if (!findUsers.isEmpty()) {
             throw new IllegalStateException("이미 존재하는 닉네임입니다.");
+        }
+        else if(!findUserIds.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 아이디입니다.");
         }
     }
 

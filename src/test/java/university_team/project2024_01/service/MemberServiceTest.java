@@ -6,23 +6,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-import university_team.project2024_01.domain.User;
-import university_team.project2024_01.repository.UserRepository;
-
-import static org.junit.jupiter.api.Assertions.*;
+import university_team.project2024_01.domain.Member;
+import university_team.project2024_01.repository.MemberRepository;
 
 @SpringBootTest
 @Transactional
-class UserServiceTest {
+class MemberServiceTest {
 
-    @Autowired UserService userService;
-    @Autowired UserRepository userRepository;
+    @Autowired
+    MemberService userService;
+    @Autowired
+    MemberRepository userRepository;
 
     @Test
     @Rollback(value = false)
     public void 회원가입 () throws Exception {
         //given
-        User user = new User();
+        Member user = new Member();
         user.setUsername("song");
 
         //when
@@ -35,10 +35,10 @@ class UserServiceTest {
     @Test
     public void 중복_회원_예외 () throws Exception {
         //given
-        User user1 = new User();
+        Member user1 = new Member();
         user1.setUsername("song1");
 
-        User user2 = new User();
+        Member user2 = new Member();
         user2.setUsername("song1");
 
         //when

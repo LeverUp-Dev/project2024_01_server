@@ -1,5 +1,6 @@
 package university_team.project2024_01.config;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ import university_team.project2024_01.jwt.LoginFilter;
 public class SecurityConfig {
 
     private final AuthenticationConfiguration authenticationConfiguration;
+    private final ObjectMapper objectMapper;
 
     //AuthenticationManager Bean 등록
     @Bean
@@ -54,7 +56,7 @@ public class SecurityConfig {
         //필터 추가 LoginFilter()는 인자를 받음
         // (AuthenticationManager() 메소드에 authenticationConfiguration 객체를 넣어야 함) 따라서 등록 필요
         http.addFilterAt(
-                new LoginFilter(authenticationManager(authenticationConfiguration))
+                new LoginFilter(authenticationManager(authenticationConfiguration), objectMapper)
                 , UsernamePasswordAuthenticationFilter.class);
 
         //세션 설정

@@ -6,4 +6,6 @@ import university_team.project2024_01.entity.Member;
 public interface UserRepository extends JpaRepository<Member, Long> {
 
     Boolean existsByUsername(String username);
+
+    Member findByUsername(String username);
 }

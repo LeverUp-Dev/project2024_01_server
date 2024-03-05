@@ -1,6 +1,7 @@
 package university_team.project2024_01.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,8 +14,13 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import university_team.project2024_01.jwt.JWTFilter;
 import university_team.project2024_01.jwt.JWTUtil;
 import university_team.project2024_01.jwt.LoginFilter;
+
+import java.util.Collections;
 
 @Configuration
 @EnableWebSecurity
@@ -41,6 +47,25 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        http.cors((cors) -> cors.configurationSource(new CorsConfigurationSource() {
+
+            @Override
+            public CorsConfiguration getCorsConfiguration(HttpServletRequest request) {
+
+                CorsConfiguration configuration = new CorsConfiguration();
+
+                configuration.setAllowedOrigins(Collections.singletonList("/**"));
+                configuration.setAllowedMethods(Collections.singletonList("*"));
+                configuration.setAllowedHeaders(Collections.singletonList("*"));
+                configuration.setAllowCredentials(true);
+                configuration.setMaxAge(3600L);
+
+                configuration.setExposedHeaders(Collections.singletonList("Authorization"));
+
+                return configuration;
+            }
+        }));
+
         //csrf 차단
         http.csrf(AbstractHttpConfigurer::disable);
         //From 로그인 방식 차단
@@ -53,6 +78,8 @@ public class SecurityConfig {
                 .requestMatchers("/login", "/", "/join").permitAll()
                 .requestMatchers("/admin").hasRole("ADMIN")
                 .anyRequest().authenticated());
+
+        http.addFilterBefore(new JWTFilter(jwtUtil), LoginFilter.class);
 
         //필터 추가 LoginFilter()는 인자를 받음
         // (AuthenticationManager() 메소드에 authenticationConfiguration 객체를 넣어야 함) 따라서 등록 필요
